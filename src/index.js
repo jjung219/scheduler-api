@@ -7,6 +7,13 @@ const server = require("http").Server(app);
 const WebSocket = require("ws");
 const wss = new WebSocket.Server({ server });
 
+const { Pool, Client } = require('pg')
+const connectionString = 'postgres://kufuhwmnmziusu:53d334b36ec54da41e2f53b4f4aa1bee051bdc78a93e43002483699dc116c29b@ec2-54-211-238-131.compute-1.amazonaws.com:5432/d32ogb81u0l88u'
+
+const pool = new Pool({
+    connectionString: connectionString,
+})
+
 wss.on("connection", socket => {
   socket.onmessage = event => {
     console.log(`Message Received: ${event.data}`);
