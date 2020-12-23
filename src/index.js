@@ -13,6 +13,7 @@ const connectionString = 'postgres://kufuhwmnmziusu:53d334b36ec54da41e2f53b4f4aa
 const pool = new Pool({
     connectionString: connectionString,
 })
+db.connect().then(() => console.log('db conected'));
 
 wss.on("connection", socket => {
   socket.onmessage = event => {
